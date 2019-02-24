@@ -1,12 +1,17 @@
 package com.sanuthiracommodities;
 
+import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.util.StringUtils;
 
-public class XpathCapture {
+/**
+ *
+ * @author Asu
+ */
+public class Main {
 
     private static int getElementPosition(final Element element) {
         final Elements chlds = element.parent().children();
@@ -28,8 +33,8 @@ public class XpathCapture {
         return count > 1 ? position : 0;
     }
 
-    public static void xpath(final String html) {
-        Document doc = Jsoup.parse(html);
+    public static void main(String[] args) throws IOException {
+        Document doc = Jsoup.connect("https://www.facebook.com").get();
         Elements elements = doc.body().getAllElements();
         for (Element element : elements) {
             StringBuilder path;
@@ -58,7 +63,7 @@ public class XpathCapture {
                     path.delete(0, index - 2);
                 }
             }
-            System.out.println(path + " = " + element.attributes() + " : Own Text= " + element.ownText());
+            System.out.println(path + " = " + element.ownText());
         }
     }
 }

@@ -1,20 +1,14 @@
-package AutoHeal;
+package com.sanuthiracommodities;
 
 import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.chrome.ChromeDriver;
-
-/**
- * @author info2890
- *
- */
 
 public class AutoSpyGUI extends javax.swing.JFrame {
 
     private WebDriver driver;
 
     public AutoSpyGUI() {
-        System.setProperty("webdriver.chrome.driver", "\\\\\\\\C:\\\\AutoSpy\\\\chromedriver_win32\\\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "H:\\springboot-web-app-static-master\\sanuthiracommodities\\src\\main\\resources\\static\\chromedriver.exe");
         initComponents();
         xpathPanel.setVisible(false);
         noticeBoardPanel.setVisible(false);
@@ -206,7 +200,7 @@ public class AutoSpyGUI extends javax.swing.JFrame {
         urlPanel.setVisible(false);
         try {
             driver = new ChromeDriver();
-            OpenBrowser.main(driver, xpathPanel, url);
+            OpenBrowser.main(driver, url);
         } catch (Exception e) {
             e.printStackTrace();
             cancelButton.setVisible(true);
@@ -225,8 +219,7 @@ public class AutoSpyGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String pgaeSource = driver.getPageSource();
         noticeBoardPanel.setVisible(true);
-        //String pageTitle=driver.
-        XpathCapture.xpath(noticeBoard, pgaeSource);
+        XpathCapture.xpath(pgaeSource);
     }//GEN-LAST:event_yesButtonActionPerformed
 
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
